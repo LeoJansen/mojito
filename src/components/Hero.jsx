@@ -33,7 +33,7 @@ const Hero = () => {
 
         gsap.timeline({
             scrollTrigger: {
-                trigger: '#hero',
+                trigger: 'video',
                 start: 'top top',
                 end: 'bottom top',
                 scrub: true,
@@ -54,6 +54,7 @@ const Hero = () => {
                 end: endValue,
                 scrub: true,
                 pin: true,
+                
         
             }
         })
@@ -61,8 +62,13 @@ const Hero = () => {
         videoRef.current.onloadedmetadata = () => {
             tl.to(videoRef.current, {
                 currentTime: videoRef.current.duration,
-            }
-            )
+              
+            })
+            .to('.video', {
+                opacity: 0,
+                duration: 0.5,
+                ease: "power2.out"
+            }, "-=0.1"); // Inicia um pouco antes do fim do vídeo
         }
 
     }, []);
@@ -70,7 +76,7 @@ const Hero = () => {
     return (
         <>
             <section id="hero" className="noisy" >
-                <h1 className="title">MOJITO</h1>
+                <h1 className="title">Um brinde a Daiane</h1>
                 <img src="/images/hero-left-leaf.png" alt="left -leaf" className="left-leaf" />
                 <img src="/images/hero-right-leaf.png" alt="left -leaf" className="right-leaf" />
                 <div className="body">

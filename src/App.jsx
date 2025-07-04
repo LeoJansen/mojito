@@ -10,7 +10,9 @@ const App = () => {
    <main>
     <Navbar/>
     <Hero/>
-    <div className="h-dvh bg-black"></div>
+    <div className="h-dvh bg-black flex items-center justify-center">
+      <p className="text-3xl text-indigo-50">Que não me dá um pingo de atenção</p>
+    </div>
    </main>
   )
 }
