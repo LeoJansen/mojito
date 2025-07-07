@@ -1,7 +1,25 @@
+import { useGSAP } from "@gsap/react"
 import { cocktailLists, mockTailLists } from "../../constants"
+import gsap from "gsap";
 
 
 const Cocktails = () => {
+  useGSAP(() => {
+   const parallaxTimeLine = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#cocktails',
+        start: 'top 30%',
+        end: 'bottom top',
+        scrub: true,
+      
+      }
+    });
+
+    parallaxTimeLine
+      .from('#c-left-leaf', {x: -100, y: 100 }
+      )
+      .from('#c-right-leaf', { x: 100, y: 100 });
+  }, []);
   return (
     <section id="cocktails" className="noisy">
       <img src="/images/cocktail-left-leaf.png" alt="l-leaf" id="c-left-leaf" />
@@ -27,7 +45,7 @@ const Cocktails = () => {
         </div>
 
         <div className="loved">
-          <h2 >Most popular cocktails</h2>
+          <h2 >Most loved mocktails</h2>
           <ul className="">
             {mockTailLists.map(({ name, country, detail, price }) => (
               <li key={name} className="cocktail-item">
