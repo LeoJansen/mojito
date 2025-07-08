@@ -64,11 +64,6 @@ const Hero = () => {
                 currentTime: videoRef.current.duration,
               
             })
-            .to('.video', {
-                opacity: 0,
-                duration: 0.5,
-                ease: "power2.out"
-            }, "-=0.1"); // Inicia um pouco antes do fim do vídeo
         }
 
     }, []);
