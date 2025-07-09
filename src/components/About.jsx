@@ -42,15 +42,23 @@ const About = () => {
                     <img src="/images/abt5.png" alt="grid-img-5" />
                 </div>
 
-                <div className="bottom-grid">
-                    <div className="md:col-span-3">
-                        <div className="noisy" />
-                        <img src="/images/abt5.png" alt="grid-img-5" />
-                    </div>
-
-                </div>
+                
 
             </div>
+
+            <div className="bottom-grid">
+                <div className="md:col-span-8">
+                    <div className="noisy" />
+                    <img src="/images/abt3.png" alt="grid-img-3" />
+                </div>
+                <div className="md:col-span-4">
+                    <div className="noisy" />
+                    <img src="/images/abt4.png" alt="grid-img-4" />
+                </div>
+                
+
+            </div>
+           
         </div>
     )
 }
