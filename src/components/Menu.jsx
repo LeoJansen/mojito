@@ -5,7 +5,7 @@ import { allCocktails } from "../../constants"
 const Menu = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const goToSlide = (index) =>{
-    const newIndex = index;
+    const newIndex = index;bb
 
   }
 
