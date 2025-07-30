@@ -1,14 +1,24 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { allCocktails } from "../../constants"
 
 
 const Menu = () => {
+  const contentRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const goToSlide = (index) =>{
-    const newIndex = index;bb
+  const totalCocktails = allCocktails.length;
 
+  const goToSlide = (index) => {
+    const newIndex = (index + totalCocktails) % totalCocktails;
+    setCurrentIndex(newIndex);
   }
 
+  const getCocktailAt = (indexOffset) => {
+    return allCocktails[(currentIndex + indexOffset + totalCocktails) % totalCocktails];
+  }
+
+  const currentCocktail = getCocktailAt(0);
+  const prevCocktail = getCocktailAt(-1);
+  const nextCocktail = getCocktailAt(1);
 
   return (
     <div id="menu" aria-labelledby="menu-heading">
@@ -20,15 +30,43 @@ const Menu = () => {
         {allCocktails.map((cocktail, index) => {
           const isActive = index === currentIndex;
           return (
-            <button id={cocktail.id} 
-            className={`${isActive ? "text-white border-white" : "text-white/50 border-white/50"} cocktail-tab`}
-            onClick={() => goToSlide(index)}
+            <button id={cocktail.id}
+              className={`${isActive ? "text-white border-white" : "text-white/50 border-white/50"} cocktail-tab`}
+              onClick={() => goToSlide(index)}
             >
               {cocktail.name}
             </button>
           )
         })}
       </nav>
+      <div className="content">
+        <div className="arrows">
+          <button className="text-left" onClick={() => goToSlide(currentIndex - 1)}>
+            <span>{prevCocktail.name}</span>
+            <img src="/images/right-arrow.png" alt="right-arrow" aria-hidden="true" />
+          </button>
+          <button className="text-right" onClick={() => goToSlide(currentIndex + 1)}>
+            <span>{nextCocktail.name}</span>
+            <img src="/images/left-arrow.png" alt="left-arrow" aria-hidden="true" />
+          </button>
+        </div>
+        <div className="cocktail">
+          <img src={currentCocktail.image} className="object-contain" />
+        </div>
+        <div className="recipe">
+          <div ref={contentRef} className="info">
+            <p>Recipe for:</p>
+            <p id="title">{currentCocktail.name}</p>
+          </div>
+
+          <div className="details">
+            <h2>{currentCocktail.title}</h2>
+            <p>{currentCocktail.description}</p>
+
+          </div>
+        </div>
+
+      </div>
     </div>
   )
 }
