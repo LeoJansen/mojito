@@ -1,43 +1,81 @@
-import React, { useEffect } from "react";
+import React from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import icon from "../../public/images/sampleIcon.svg";
+import ScrollSmoother from "gsap/ScrollSmoother";
+import icon from "/images/sampleIcon.svg";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 const FloatingIcon = () => {
     useGSAP(() => {
+         
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: "main",
                 start: "top top",
                 end: "bottom bottom",
-                scrub: true,
+                scrub: 1,
                 markers: false,
+                anticipatePin: 1, // Helps with smoother animations
             },
         });
 
-        tl.to(".floating-icon", { y: "random(-15, 15)", x: "random(-15, 15)",  yoyo: true, duration: 150, ease: "power1.inOut" });
-        tl.to(".floating-icon", { y: "random(15, -15)", x: "random(15, -15)",  yoyo: true, duration: 150, ease: "power1.inOut" });
+        tl.to("#ilumination ", {
+            backgroundColor: "rgba(255, 253, 203, 0.12)", duration: 150, yoyo: true,
+            repeat: 1, // Loop indefinitely
+            ease: "power1.inOut"
+        })
+   
     }, []);
 
     return (
-        <img
-            src={icon}
-            alt="Floating Icon"
-            className="floating-icon"
+        <div 
+        id="floating-icon"
+        className="wrapper"
+        style={{
+            position: "fixed",
+            bottom: "20px",
+            right: "40px",
+            width: "100px",
 
-            style={{
-                position: "fixed",
-                bottom: "20px",
-                right: "40px",
-                width: "100px",
-                
-                zIndex: 1000,
-                boxShadow: "2px 2px 10px 3px rgba(200, 200, 200, 0.2)",
-            }}
-        />
+
+            zIndex: 1000,
+
+        }}>
+
+
+            <div
+                id="ilumination"
+                className="bg-[rgba(255,253,253,0)] rounded-[4px]" style={{
+                    position: "fixed",
+                    bottom: "20px",
+                    right: "40px",
+                    width: "100px",
+                    height: "86px",
+                    zIndex: 1002,
+
+                }} />
+            <img
+                src={icon}
+                alt="Floating Icon"
+                className="floating-icon"
+
+                style={{
+                    position: "fixed",
+                    bottom: "20px",
+                    right: "40px",
+                    width: "100px",
+                    backdropFilter: "blur(100px)",
+
+
+                    zIndex: 1000,
+                    boxShadow: "2px 2px 10px 3px rgba(200, 200, 200, 0.2)",
+                }}
+            />
+
+        </div>
+
     );
 };
 
