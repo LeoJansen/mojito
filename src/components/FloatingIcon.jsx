@@ -70,7 +70,7 @@ const FloatingIcon = () => {
 
 
                     zIndex: 1000,
-                    boxShadow: "2px 2px 10px 3px rgba(200, 200, 200, 0.2)",
+                    boxShadow: "1px 2px 10px 4px rgba(200, 200, 200, 0.2)",
                 }}
             />
 
