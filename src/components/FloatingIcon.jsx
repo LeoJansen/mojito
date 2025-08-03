@@ -23,7 +23,7 @@ const FloatingIcon = () => {
 
         tl.to("#ilumination ", {
             backgroundColor: "rgba(255, 253, 203, 0.12)", duration: 150, yoyo: true,
-            repeat: 1, // Loop indefinitely
+            repeat: 2, // Loop indefinitely
             ease: "power1.inOut"
         })
    
