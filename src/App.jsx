@@ -18,7 +18,22 @@ const App = () => {
     <Hero/>
     <Cocktails/>
     <About/>
+    <Art/>
+    <Menu/>
+    <Contact/>
+    <FloatingIcon/>
     
+    <footer style={{ padding: '20px', textAlign: 'center' }}>
+      <p>Developed by</p>
+      <a 
+        href="https://www.leonardojansen.com" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        style={{ color: 'rgb(150,150,150)', textDecoration: 'none' }}
+      >
+        www.leonardojansen.com
+      </a>
+    </footer>
    </main>
   )
 }
