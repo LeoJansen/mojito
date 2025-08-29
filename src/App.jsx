@@ -14,6 +14,12 @@ const App = () => {
     <Hero/>
     <Cocktails/>
     <About/>
+    <div className="flex justify-center items-center gap-2 my-5">
+    <p>Developed by</p>
+    <a href="https://www.leonardojansen.com" target="_blank" rel="noopener noreferrer">
+      www.leonardojansen.com
+    </a>
+    </div>
     
    </main>
   )
