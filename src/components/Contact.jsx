@@ -82,6 +82,14 @@ const Contact = () => {
 
                 <p>We look forward to serving you!</p>
             </div>
+            <div className='flex flex-col justify-around items-center p-2'>
+                
+                <p className='text-white'>
+                    This is a non-commercial page intended only to integrate the portfolio available through the link www.leonardojansen.com
+                </p>
+                <img src="/images/leoLogo.png" alt="Velvep Pour Logo" className='w-30 h-30' />
+
+            </div>
         </footer>
     )
 }
